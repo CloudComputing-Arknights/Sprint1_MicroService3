@@ -31,6 +31,82 @@ paths:
                 $ref: '#/components/schemas/Transaction'
         '400':
           description: Invalid input
+          
+  /transactions/{transactionId}:
+    get:
+      tags:
+        - transaction
+      summary: Get a transaction by ID
+      description: Returns the transaction details for the given transactionId.
+      operationId: getTransaction
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        '404':
+          description: Transaction not found
+
+    put:
+      tags:
+        - transaction
+      summary: Update an existing transaction
+      description: Updates the details or status of a transaction.
+      operationId: updateTransaction
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: The transaction object with updated fields
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+        '400':
+          description: Invalid input
+        '404':
+          description: Transaction not found
+
+    delete:
+      tags:
+        - transaction
+      summary: Delete a transaction
+      description: Deletes the transaction with the given transactionId.
+      operationId: deleteTransaction
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Transaction deleted successfully
+        '404':
+          description: Transaction not found
+    
 components:
   schemas:
     Transaction:
