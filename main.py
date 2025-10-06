@@ -5,6 +5,7 @@ import os
 from fastapi import FastAPI, HTTPException, status
 
 from models.transaction import Transaction
+from models.new_transaction_request import NewTransactionRequest
 
 port = int(os.environ.get("FASTAPIPORT", 8000))
 
@@ -34,6 +35,17 @@ def root():
 def create_transaction(transaction: Transaction):
     return True
 
+@app.put("/transactions/{transactionId}", response_model=Transaction)
+def update_transaction(transactionId: int, updated_transaction: Transaction):
+    return 
+
+@app.delete("/transactions/{transactionId}", response_model=Transaction)
+def delete_transaction(transactionId: int):
+    return
+
+@app.get("/transactions/{transactionId}", response_model=Transaction)
+def get_transaction(transactionId: int):
+    return
 
 # -----------------------------------------------------------------------------
 # Entrypoint for `python main.py`

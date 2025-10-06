@@ -20,7 +20,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Transaction'
+              $ref: '#/components/schemas/NewTransactionRequest'
         required: true
       responses:
         '200':
@@ -112,6 +112,10 @@ components:
     Transaction:
       type: object
       properties:
+        transactionId:
+          type: integer
+          format: int64
+          example: 5
         itemId:
           type: integer
           format: int64
@@ -134,3 +138,21 @@ components:
           type: string
           format: date-time
           description: The timestamp when the transaction was last updated.
+
+    NewTransactionRequest:
+      type: object
+      properties:
+        itemId:
+          type: integer
+          format: int64
+          example: 8
+        initiatorUserId:
+          type: string
+          example: 4
+        receiverUserId:
+          type: string
+          example: 6
+        status:
+          type: string
+          description: The current status of the transaction.
+          enum: [pending, completed, canceled]
