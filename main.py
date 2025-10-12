@@ -35,16 +35,16 @@ def root():
 def create_transaction(transaction: Transaction):
     return True
 
+@app.get("/transactions/{transactionId}", response_model=Transaction)
+def get_transaction(transactionId: int):
+    return
+
 @app.put("/transactions/{transactionId}", response_model=Transaction)
 def update_transaction(transactionId: int, updated_transaction: Transaction):
     return 
 
 @app.delete("/transactions/{transactionId}", response_model=Transaction)
 def delete_transaction(transactionId: int):
-    return
-
-@app.get("/transactions/{transactionId}", response_model=Transaction)
-def get_transaction(transactionId: int):
     return
 
 # -----------------------------------------------------------------------------
