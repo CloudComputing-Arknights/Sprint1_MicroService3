@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 
 from fastapi import FastAPI, HTTPException, status
+import mysql.connector
 
 from models.transaction import Transaction
 from models.new_transaction_request import NewTransactionRequest
@@ -18,8 +19,27 @@ app = FastAPI(
     description="Am API to manage transactions.",
     version="1.0.0",
 )
+# -----------------------------------------------------------------------------
+# Connect to db
+# -----------------------------------------------------------------------------
+app = FastAPI(
+    title="Transaction API",
+    description="Am API to manage transactions.",
+    version="1.0.0",
+)
+db_config = {
+    "host": "136.113.127.151",          
+    "user": "microservice_3",             
+    "password": "arknights123",    
+    "database": "neighborhood_db"          
+}
 
-
+try:
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor(dictionary=True)
+    print("✅ Database connected successfully")
+except Exception as e:
+    print("❌ Database connection failed:", e)
 # -----------------------------------------------------------------------------
 # Root Endpoint
 # -----------------------------------------------------------------------------
