@@ -53,19 +53,19 @@ def root():
 # -----------------------------------------------------------------------------
 @app.post("/transactions/transaction", response_model=Transaction, status_code=status.HTTP_201_CREATED)
 def create_transaction(transaction: Transaction):
-    return True
+    raise HTTPException(status_code=status.HTTP_501_NOT_IMPLEMENTED)
 
 @app.get("/transactions/{transactionId}", response_model=Transaction)
 def get_transaction(transactionId: int):
-    return
+    raise HTTPException(status_code=status.HTTP_501_NOT_IMPLEMENTED)
 
 @app.put("/transactions/{transactionId}", response_model=Transaction)
 def update_transaction(transactionId: int, updated_transaction: Transaction):
-    return 
+    raise HTTPException(status_code=status.HTTP_501_NOT_IMPLEMENTED)
 
 @app.delete("/transactions/{transactionId}", response_model=Transaction)
 def delete_transaction(transactionId: int):
-    return
+    raise HTTPException(status_code=status.HTTP_501_NOT_IMPLEMENTED)
 
 # -----------------------------------------------------------------------------
 # Entrypoint for `python main.py`
